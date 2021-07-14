@@ -1,34 +1,117 @@
 import * as actionTypes from "./shopping-types";
+import Bannas from "../../components/Products/shopImage/bannas.png"
+import Apples from "../../components/Products/shopImage/apple.png"
+import berry from "../../components/Products/shopImage/strawberry.png"
+import Nuts from "../../components/Products/shopImage/cashew.png"
+import bone from "../../components/Products/shopImage/bone.png"
+import chicken from "../../components/Products/shopImage/chicken.png"
 
 const INITIAL_STATE = {
-  products: [
+  products:[ {
+    id: 1,
+    name: "Organic Bannas",
+    image: Bannas,
+    price: "$4.99",
+    description: "7pcs priceg",
+    inCart: false,
+  },
+  {
+    id: 2,
+    name: "Red Apple",
+    image: Apples,
+    price: "$4.99",
+    description: "7pcs priceg", 
+    inCart: false,
+  },
+  {
+    id: 3,
+    name: "Red Apple",
+    image: Apples,
+    price: "$4.99",
+    description: "7pcs priceg",
+    inCart: false,
+  }, 
+  {
+    id: 4,
+    name: "Red Apple",
+    image: Apples,
+    price: "$4.99",
+    description: "7pcs priceg",
+    inCart: false,
+  },],
+  newProducts:[
     {
-      id: 1,
-      title: "This is the COOLEST Cube Ever",
-      description:
-        "This cube will keep you busy the entire day and it is very fun to play with",
-      price: 15.0,
-      image:
-        "https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    },
+        id: 5,
+        name: "Strawberries",
+        image: berry,
+        price: "$4.99",
+        inCart: false,
+  
+        description: "7pcs priceg",
+      },
+      {
+        id: 6,
+        name: "Cashew Nuts",
+        image: Nuts,
+        price: "$4.99",
+        inCart: false,
+  
+        description: "7pcs priceg",
+      },
+      {
+        id: 7,
+        name: "Tomatoes",
+        image: Bannas,
+        price: "$4.99",
+        inCart: false,
+  
+        description: "7pcs priceg",
+      },
+      {
+        id: 8,
+        name: "Pear",
+        image: Bannas,
+        price: "$4.99",
+        inCart: false,
+  
+        description: "7pcs priceg",
+      },
+  ],
+  gorceries:[
     {
-      id: 2,
-      title: "Large Coffee Cup",
-      description:
-        "Get a big cup of coffee every morning before the day starts",
-      price: 20.0,
-      image:
-        "https://images.unsplash.com/photo-1572119865084-43c285814d63?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-    },
-    {
-      id: 3,
-      title: "Books That CHANGED My Life",
-      description:
-        "These books will keep you busy all throughout the entire lockdown and give you some great advise from famous people",
-      price: 150.0,
-      image:
-        "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1374&q=80",
-    },
+        id: 9,
+        name: "Beef bone",
+        image: bone,
+        price: "$4.99",
+        inCart: false,
+        description: "7pcs priceg",
+      },
+      {
+        id: 10,
+        name: "Broiller chicken",
+        image: chicken,
+        price: "$4.99",
+        inCart: false,
+        description: "7pcs priceg",
+      },
+      {
+        id: 11,
+        name: "Strawberries",
+        image: berry,
+        price: "$4.99",
+        inCart: false,
+        
+        description: "7pcs priceg",
+      },
+      {
+        id: 12,
+        name: "Strawberries",
+        image: berry,
+        price: "$4.99",
+        inCart: false,
+        description: "7pcs priceg",
+      },
+      
   ],
   cart: [],
   currentItem: null,

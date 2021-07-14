@@ -9,32 +9,32 @@ import {
   addToCart,
 } from "../../../redux/Shopping/shopping-actions";
 
-const Product = ({ product, addToCart, loadCurrentItem }) => {
+const Product = ({ fruit, addToCart, loadCurrentItem }) => {
   return (
     <div className={styles.product}>
       <img
         className={styles.product__image}
-        src={product.image}
-        alt={product.title}
+        src={fruit.image}
+        alt={fruit.name}
       />
 
       <div className={styles.product__details}>
-        <p className={styles.details__title}>{product.title}</p>
-        <p className={styles.details__desc}>{product.description}</p>
-        <p className={styles.details__price}>$ {product.price}</p>
+        <p className={styles.details__title}>{fruit.name}</p>
+        <p className={styles.details__desc}>{fruit.description}</p>
+        <p className={styles.details__price}>$ {fruit.price}</p>
       </div>
 
       <div className={styles.product__buttons}>
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/product/${fruit.id}`}>
           <button
-            onClick={() => loadCurrentItem(product)}
+            onClick={() => loadCurrentItem(fruit)}
             className={`${styles.buttons__btn} ${styles.buttons__view}`}
           >
             View Item
           </button>
         </Link>
         <button
-          onClick={() => addToCart(product.id)}
+          onClick={() => addToCart(fruit.id)}
           className={`${styles.buttons__btn} ${styles.buttons__add}`}
         >
           Add To Cart

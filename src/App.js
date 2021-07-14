@@ -13,23 +13,49 @@ import Navbar from "./components/Navbar/Navbar";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import SingleItem from "./components/SingleItem/SingleItem";
+import Loading from "./Splash/Loading";
+import Signup from "./Auth/Signup";
+import { AuthProvider } from "./Auth/Authcontext";
+import Login from "./Auth/Login";
+import Shop from "./components/Products/Shop";
+import { Context } from "./Context/Context";
+import Bottomnav from "./components/Nav/Bottomnav";
+import Basket from "./components/Basket/Basket";
+import Fav from "./components/Fav/Fav";
+import { Favcontext } from "./Context/Favcontext";
+import Mappedfav from "./components/Fav/Mappedfav";
 
 function App({ current }) {
   return (
+    <Context>
+      <Favcontext>
     <Router>
       <div className="app">
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
-          <Route exact path="/" component={Products} />
-          <Route exact path="/cart" component={Cart} />
+          <AuthProvider>
+        {/* <Route exact path="/"  component={Loading}></Route>
+        <Route path="/signup" exact component={Signup}></Route>
+        <Route path="/login" component={Login}></Route> */}
+
+          <Route  path="/"exact component={Shop} />
+          <Route exact path="/basket" component={Basket} />
           {!current ? (
             <Redirect to="/" />
           ) : (
             <Route exact path="/product/:id" component={SingleItem} />
           )}
+           <Route path="/fav" component={Mappedfav}>
+                {" "}
+                <Mappedfav></Mappedfav>
+              </Route>
+          <Bottomnav></Bottomnav>
+          </AuthProvider>
         </Switch>
       </div>
     </Router>
+    </Favcontext>
+    </Context>
   );
 }
 

@@ -1,0 +1,55 @@
+.nav{
+    width: 100%;
+    bottom: 0;
+ 
+    position: fixed;
+    height: 7vh;
+    background: #FFFFFF ;
+    box-shadow: 0px -12px 37px rgba(230, 235, 243, 0.5);
+    border-radius: 15px 15px 0px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    
+   
+  
+}
+
+.icons-flex{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+   
+}
+.btn-active{
+    border: none;
+    color: #53B175;;
+    background: none;
+    font-size: 1.2rem;
+}
+.icons-flex p{
+    font-size: 0.7rem;
+}
+.active-tab{
+    color: white;
+    border-bottom: 1px solid transparent;
+
+}
+.btn{
+    background: none;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+
+}
+
+/* .btn::before{
+    content: "";
+    display: block;
+    position: absolute;
+    transform: translateX(-50%);
+    height: 5px;
+    color: green;
+    width: calc(100%=20px);
+} */
