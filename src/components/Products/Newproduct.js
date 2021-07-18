@@ -1,51 +1,45 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../Context/Context";
 import "../../Component css/products.css"
+import btn from "./shopImage/btn.png"
 import { connect } from "react-redux";
 import {loadCurrentItem} from "../../redux/Shopping/shopping-actions"
 import { Link } from "react-router-dom";
-function Newproduct({   fruit,loadCurrentItem,name}) {
-  const addTocart = (product) => {
-    product.inCart=true
-    setCart([...cart, { ...product }]);
-  };
-  const [cart, setCart] = useContext(CartContext);
+import TransitionsModal from "../../Modal/modal";
+function Newproduct({   product,addToBasket}) {
+  const handleAddtoCart=()=> addToBasket(product.id,1)
+  // const [cart, setCart] = useContext(CartContext);
 
   return (
     <>
          
-      <div key={fruit.id} className="container">
-      <Link to={`/product/${fruit.id}`} onClick={() => loadCurrentItem(fruit)}>
-
+      <div key={product.id} className="container">
+      <TransitionsModal product={product}>
           <div className="image-holder">
-            <img alt="" src={fruit.image}></img>
+            <img alt="" src={product.media.source}></img>
           </div>
-          </Link>
+          </TransitionsModal>
 
           <div className="para">
-            <p>{fruit.name}</p>
-            <p className="desc">{fruit.description}</p>
+            <p>{product.name}</p>
+            {/* <p className="desc" dangerouslySetInnerHTML={{__html:product.description}}></p> */}
           </div>
         <div className="para-flex">
           <div className="para">
-            <p>{fruit.price}</p>
+            <p>${product.price.formatted}</p>
           </div>
 
           <div className="para">
-            <div className="cart">
+            <div className="cart" style={{background:"none"}}>
               <button
-              disabled={fruit.inCart ? true : false}
-
-                onClick={() => addTocart(fruit)}
-                style={{ width: "30px" }}
-              >
-                add to cart
+             
+                style={{background:"none",border:"none" }}
+              > <img onClick={handleAddtoCart} style={{width:"100%"}} src={btn}></img>
               </button>
             </div>
           </div>
         </div>
       </div>
-<h1>{name}</h1>
 
     </>
   );

@@ -4,7 +4,8 @@
     align-items: center;
     grid-gap: 0.5rem;
     margin: auto;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
+    flex-wrap: wrap;
 }
 .section{
     margin-bottom: 100px;

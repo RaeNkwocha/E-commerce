@@ -10,15 +10,12 @@ import Bottomnav from '../Nav/Bottomnav'
 import Product from './Product/Product'
 import { FavContext } from '../../Context/Favcontext'
 import Mappedfav from '../Fav/Mappedfav'
+import TransitionsModal from '../../Modal/modal'
 
-function Shop({products,newProducts,gorceries}) {
+function Shop({products,addToBasket}) {
     const [input, setInput]=useState("")
-    const [cart, setCart] = useContext(CartContext);
 
-    const addTocart = (product) => {
-        product.inCart = true;
-        setCart([...cart, { ...product }]);
-      };
+    
     
     return (
         <div    style={{
@@ -81,12 +78,13 @@ function Shop({products,newProducts,gorceries}) {
               <h5 style={{ fontWeight: "bold" }}>Exclusive Offer</h5>
               <h5 style={{ color: "#53B175", fontSize: "0.6rem" }}>see more</h5>
             </section>
+           
             <div className="product-display">
-              {products.map((fruit) => {
-                return  <Newproduct key={fruit.id}
-                                     fruit={fruit}
+              {products.map((product) => {
+                return  <Newproduct key={product.id}
+                                     product={product}
                                 
-                                  addTocart={addTocart}
+                                  addToBasket={addToBasket}
 
                 >
 
@@ -94,16 +92,17 @@ function Shop({products,newProducts,gorceries}) {
             })}
             </div>
            
-            <section className="flex">
+           
+            {/* <section className="flex">
               <h5 style={{ fontWeight: "bold", fontSize: "0.7rem" }}>
                 Best selling
               </h5>
               <h5 style={{ color: "#53B175", fontSize: "0.6rem" }}>see more</h5>
             </section>
             <div className="product-display">
-              {newProducts.map((fruit) => {
+              {products.map((product) => {
                 return  <Newproduct key={fruit.id}
-                                    fruit={fruit}
+                                    product={product}
 
                               
                                   addTocart={addTocart}
@@ -112,17 +111,17 @@ function Shop({products,newProducts,gorceries}) {
 
                 </Newproduct>
             })}
-            </div>
-            <section className="flex">
+            </div> */}
+            {/* <section className="flex">
               <h5 style={{ fontWeight: "bold", fontSize: "0.7rem" }}>
                 Groceries
               </h5>
               <h5 style={{ color: "#53B175", fontSize: "0.6rem" }}>see more</h5>
             </section>
             <div className="product-display">
-              {gorceries.map((fruit) => {
+              {products.map((product) => {
                 return  <Newproduct key={fruit.id}
-                                        fruit={fruit}
+                                        product={product}
                                 
                                   addTocart={addTocart}
                                 
@@ -131,7 +130,7 @@ function Shop({products,newProducts,gorceries}) {
 
                 </Newproduct>
             })}
-            </div>
+            </div> */}
           </section>
             </div>
             <Bottomnav></Bottomnav>
@@ -139,12 +138,13 @@ function Shop({products,newProducts,gorceries}) {
         </div>
     )
 }
-const mapStateToProps= (state) =>{
-    return{
-      products:state.shop.products,
-      newProducts:state.shop.newProducts,
-      gorceries:state.shop.gorceries
-    }
-  }
+// const mapStateToProps= (state) =>{
+//     return{
+//       products:state.shop.products,
+//       newProducts:state.shop.newProducts,
+//       gorceries:state.shop.gorceries
+//     }
+//   }
 
-export default connect(mapStateToProps) (Shop)
+export default Shop
+// export default connect(mapStateToProps) (Shop)

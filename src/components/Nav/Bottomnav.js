@@ -6,7 +6,7 @@ import { CartContext } from "../../Context/Context";
 import "../../Component css/nav.css"
 import { FavContext, Favcontext } from "../../Context/Favcontext";
 
-function Bottomnav() {
+function Bottomnav({totalItems}) {
   const [tab, setTab] = useState(1);
   const [cart] = useContext(CartContext);
   const [fav] = useContext(FavContext);
@@ -53,7 +53,7 @@ function Bottomnav() {
               <i class="fa fa-shopping-cart"></i>{" "}
             </button>
 
-          <p>Cart({cart.length})</p>
+          <p>Cart({totalItems})</p>
         </div>
         <div className="icons-flex">
           <Link style={{ textDecoration: "none", color: "black" }} to="fav">
