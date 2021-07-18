@@ -1,86 +1,65 @@
-// import { Badge } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { CartContext } from "../../Context/Context";
-// import "./nav.css";
-import "../../Component css/nav.css"
-import { FavContext, Favcontext } from "../../Context/Favcontext";
+import "../../Component css/nav.css";
+import { Badge } from "@material-ui/core";
 
-function Bottomnav({totalItems}) {
-  const [tab, setTab] = useState(1);
-  const [cart] = useContext(CartContext);
-  const [fav] = useContext(FavContext);
-
-  const toggle = (index) => {
-    setTab(index);
-  };
+function Bottomnav({ totalItems }) {
   const history = useHistory();
   const handlenav = () => {
     history.push("/basket");
   };
   return (
-    <div>
-      <div className="nav">
-        <div className="icons-flex">
-          <Link to="/">
-            <button
-              className={tab === 1 ? "btn-active" : "btn"}
-              onClick={() => toggle(1)}
-            >
-              <i class="fa fa-home"></i>
-            </button>
-          </Link>
-          <p>Shop</p>
-        </div>
-        <div className="icons-flex">
-          <Link to="/Explore">
-            <button
-              className={tab === 2 ? "btn-active" : "btn"}
-              onClick={() => toggle(2)}
-            >
-              <i class="fa fa-search"></i>
-            </button>
-          </Link>
-          <p>Explore</p>
-        </div>
-
-        <div className="icons-flex">
-            <button
-              className={tab === 3 ? "btn-active" : "btn"}
-              onClick={handlenav}
-            >
-              {" "}
-              <i class="fa fa-shopping-cart"></i>{" "}
-            </button>
-
-          <p>Cart({totalItems})</p>
-        </div>
-        <div className="icons-flex">
-          <Link style={{ textDecoration: "none", color: "black" }} to="fav">
-              <button
-                className={tab === 4 ? "btn-active" : "btn"}
-                onClick={() => toggle(4)}
-              >
-                <i class="fa fa-heart"></i>
-              </button>
-            <p>Favourite({fav.length})</p>
-          </Link>
-        </div>
-        <div className="icons-flex">
-          <Link style={{ textDecoration: "none", color: "black" }} to="account">
-            <button
-              className={tab === 5 ? "btn-active" : "btn"}
-              onClick={() => toggle(5)}
-            >
-              <i class="fa fa-user"></i>
-            </button>
-            <p>Account</p>
-          </Link>
-        </div>
+    <nav className="navbar">
+      <div className="icons">
+        <Link to="/">
+          <button
+            style={{ border: "none", background: "none", cursor: "pointer" }}
+          >
+            {" "}
+            <h2 style={{ margin: "10px" }}>raenFoodSTORE</h2>
+          </button>
+        </Link>
       </div>
-
-      <div></div>
-    </div>
+      <ul>
+        <li>
+          <div className="icons-flex">
+            <Link style={{ textDecoration: "none", color: "black" }} to="fav">
+              <button
+                style={{
+                  border: "none",
+                  background: "none",
+                  marginRight: "20px",
+                }}
+              >
+                <i
+                  style={{ fontSize: "18px", marginTop: "5px" }}
+                  class="fa fa-heart-o"
+                  aria-hidden="true"
+                ></i>
+              </button>
+              <p style={{ marginRight: "20px", fontSize: "10px" }}>Wishlist</p>
+            </Link>
+          </div>
+        </li>
+        <li>
+          <div className="icons-flex">
+            <Badge badgeContent={totalItems} color="secondary">
+              <button
+                style={{ border: "none", background: "none" }}
+                onClick={handlenav}
+              >
+                {" "}
+                <i
+                  style={{ fontSize: "18px", marginTop: "5px" }}
+                  class="fa fa-shopping-cart"
+                ></i>{" "}
+              </button>
+            </Badge>
+            <p style={{ fontSize: "10px" }}>Cart</p>
+          </div>
+        </li>
+      </ul>
+    </nav>
   );
 }
 
