@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
-    width: "90%",
-    height: "80%",
+    width: "70%",
+    height: "70%",
     backgroundColor: "white",
     border: "1px solid lightgrey",
     borderRadius: 10,
@@ -70,7 +70,7 @@ export default function TransitionsModal({
             <div
               style={{
                 background: "lightgrey",
-                height: "30%",
+                height: "50%",
                 borderRadius: "10px",
               }}
             >
@@ -82,7 +82,7 @@ export default function TransitionsModal({
                   justifyContent: "center",
                   alignItems: "center",
                   margin: "auto",
-                  padding: "20px",
+                  paddingTop: "70px",
                 }}
                 src={product.media.source}
               ></img>
