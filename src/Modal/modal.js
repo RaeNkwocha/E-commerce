@@ -107,7 +107,7 @@ export default function TransitionsModal({
                 color="secondary"
                 variant="contained"
                 onClick={handleAddtoCart}
-                style={{ margin: "15px" }}
+                style={{ margin: "5px" }}
               >
                 {" "}
                 Add to wishlist{" "}
@@ -121,7 +121,7 @@ export default function TransitionsModal({
                 color="primary"
                 variant="contained"
                 onClick={handleAddtoBasket}
-                style={{ margin: "15px" }}
+                style={{ margin: "5px" }}
               >
                 {" "}
                 Add to Cart{" "}

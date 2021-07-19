@@ -45,11 +45,6 @@ function Basket({
           </div>
         ))}
         <div className="navbar">
-          <div className="icons">
-            <h5 style={{ marginTop: "15px", marginLeft: "5px" }}>
-              Subtotal: {cart.subtotal.formatted_with_symbol}
-            </h5>{" "}
-          </div>
           <ul>
             <li>
               <Button
@@ -79,8 +74,14 @@ function Basket({
   return (
     <>
       <Bottomnav totalItems={totalItems} favitems={favitems}></Bottomnav>
-      <div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h3 style={{ textAlign: "center", margin: "20px" }}>My cart</h3>
+        <h4 style={{ margin: "20px" }}>
+          Subtotal:{" "}
+          <span style={{ color: "green" }}>
+            {cart.subtotal.formatted_with_symbol}
+          </span>
+        </h4>{" "}
       </div>
       <div className="line"></div>
       <section>
