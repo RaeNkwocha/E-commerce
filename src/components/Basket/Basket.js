@@ -46,9 +46,9 @@ function Basket({
         ))}
         <div className="navbar">
           <div className="icons">
-            <h3 style={{ marginTop: "15px", marginLeft: "15px" }}>
+            <h5 style={{ marginTop: "15px", marginLeft: "5px" }}>
               Subtotal: {cart.subtotal.formatted_with_symbol}
-            </h3>{" "}
+            </h5>{" "}
           </div>
           <ul>
             <li>

@@ -92,7 +92,7 @@ export default function TransitionsModal({
             <p style={{ color: "black", margin: "10px" }}>{product.name}</p>
             <p
               className="desc"
-              style={{ margin: "10px", fontSize: "12px", lineHeight: "1.2rem" }}
+              style={{ margin: "10px", fontSize: "10px", lineHeight: "12px" }}
               dangerouslySetInnerHTML={{ __html: product.description }}
             ></p>{" "}
             <section
