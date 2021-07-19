@@ -1,15 +1,7 @@
-import { Button } from "@material-ui/core";
 import React, { useContext } from "react";
-import { CartContext } from "../../Context/Context";
 
-// import cross from "../Images/delete.png"
 import cross from "./Image/delete.png";
-function Incart({ item, handleUpdateqty, removefromcart, emprtycart, cart }) {
-  // const [cart, setCart] = useContext(CartContext);
-  // const Onremove = (id) => {
-  //   const newItems = cart.filter((item) => item.id !== id);
-  //   setCart(newItems);
-  // };
+function Incart({ item, handleUpdateqty, removefromcart }) {
   const removeitem = (lineItemId) => removefromcart(lineItemId);
 
   return (

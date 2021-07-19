@@ -3,7 +3,15 @@ import React from "react";
 import Bottomnav from "../Nav/Bottomnav";
 import Infav from "./Infav";
 
-const Fav = ({ fav, emprtyFav, removefromfav, totalItems, favitems }) => {
+const Fav = ({
+  fav,
+  emprtyFav,
+  removefromfav,
+  totalItems,
+  favitems,
+  addToBasket,
+  products,
+}) => {
   const Emptycart = () => (
     <>
       <h3
@@ -27,6 +35,8 @@ const Fav = ({ fav, emprtyFav, removefromfav, totalItems, favitems }) => {
               item={item}
               removefromfav={removefromfav}
               emprtyFav={emprtyFav}
+              addToBasket={addToBasket}
+              products={products}
             ></Infav>
           </div>
         ))}

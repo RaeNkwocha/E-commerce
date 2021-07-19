@@ -109,7 +109,7 @@ export default function TransitionsModal({
                 style={{
                   margin: "5px",
                   padding: "5px",
-                  background: "red",
+                  background: "#c80815",
                   border: "none",
                   outline: "none",
                 }}
@@ -127,7 +127,7 @@ export default function TransitionsModal({
                 style={{
                   margin: "5px",
                   padding: "5px",
-                  background: "blue",
+                  background: "#5D8AA8",
                   border: "none",
                   outline: "none",
                 }}

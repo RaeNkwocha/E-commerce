@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../Context/Context";
+import React from "react";
+import cross from "../../components/Basket/Image/delete.png";
+import btn from "../Products/shopImage/btn.png";
 
-// import cross from "../Images/delete.png"
-// import cross from "./Image/delete.png";
-function Infav({ item, handleUpdateqty, removefromcart, emprtycart }) {
-  const removeitem = (lineItemId) => removefromcart(lineItemId);
+function Infav({ item, removefromfav, addToBasket, products }) {
+  const removeitem = (lineItemId) => removefromfav(lineItemId);
+  const handlefromFav = () => addToBasket(products.id, 1);
 
   return (
     <>
@@ -19,41 +19,26 @@ function Infav({ item, handleUpdateqty, removefromcart, emprtycart }) {
         <div className="new-layout">
           <div className="layout-flex">
             <h6>{item.name}</h6>
-            {/* <img
+            <img
               onClick={() => removeitem(item.id)}
               style={{ width: "12px" }}
               src={cross}
               alt=""
-            ></img> */}
+            ></img>
           </div>
 
           <div className="layout-flex-1">
-            {/* <div
-              className="new-counter"
-              style={{ width: "20%", display: "flex" }}
-            >
-              <div className="circle">
-                <i style={{ margin: "10px" }} class="fa fa-minus" onClick={()=>handleUpdateqty(item.id,item.quantity -1)}></i>
-              </div>
-              <div
-                className="counter-holder"
-                style={{
-                  margin: "auto",
-                  width: "20%",
-                  marginLeft: "0.5rem",
-                  marginRight: "0.5rem",
-                }}
-              >
-                <h3>{item.quantity}</h3>
-              </div>
-              <div className="circle">
-                <i onClick={()=>handleUpdateqty(item.id,item.quantity +1)}
-                  style={{ color: "#53B175", margin: "10px" }}
-                  class="fa fa-plus"
-                ></i>
-              </div>
-            </div> */}
             <h6>${item.price.formatted * item.quantity}</h6>
+            <div className="cart" style={{ background: "none" }}>
+              <button style={{ background: "none", border: "none" }}>
+                {" "}
+                <img
+                  onClick={handlefromFav}
+                  style={{ width: "50%", marginTop: "5px" }}
+                  src={btn}
+                ></img>
+              </button>
+            </div>
           </div>
         </div>
       </div>

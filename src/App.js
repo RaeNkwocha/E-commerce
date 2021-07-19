@@ -114,7 +114,9 @@ function App({ current }) {
                   <Fav
                     totalItems={cart.total_items}
                     favitems={fav.total_items}
+                    products={products}
                     addToFav={addToFav}
+                    addToBasket={addToBasket}
                     fav={fav}
                     removefromfav={removefromfav}
                     emprtyFav={emprtyFav}
