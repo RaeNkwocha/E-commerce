@@ -107,12 +107,12 @@ export default function TransitionsModal({
                 color="secondary"
                 variant="contained"
                 onClick={handleAddtoCart}
-                style={{ margin: "5px" }}
+                style={{ margin: "5px", padding: "5px" }}
               >
                 {" "}
                 Add to wishlist{" "}
                 <i
-                  style={{ marginLeft: "10px" }}
+                  style={{ marginLeft: "5px" }}
                   class="fa fa-heart-o"
                   aria-hidden="true"
                 ></i>
@@ -121,12 +121,12 @@ export default function TransitionsModal({
                 color="primary"
                 variant="contained"
                 onClick={handleAddtoBasket}
-                style={{ margin: "5px" }}
+                style={{ margin: "5px", padding: "5px" }}
               >
                 {" "}
                 Add to Cart{" "}
                 <i
-                  style={{ marginLeft: "10px" }}
+                  style={{ marginLeft: "5px" }}
                   class="fa fa-shopping-cart"
                   aria-hidden="true"
                 ></i>
