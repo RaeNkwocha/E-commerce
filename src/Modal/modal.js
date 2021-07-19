@@ -70,13 +70,14 @@ export default function TransitionsModal({
             <div
               style={{
                 background: "lightgrey",
-                height: "50%",
+                height: "30%",
                 borderRadius: "10px",
               }}
             >
               <img
                 style={{
-                  width: "50%",
+                  maxWidth: "100%",
+                  height: "auto",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
