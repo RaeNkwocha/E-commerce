@@ -13,7 +13,11 @@ function Newproduct({ product, addToBasket, addToFav }) {
   return (
     <>
       <div key={product.id} className="container">
-        <TransitionsModal addToFav={addToFav} product={product}>
+        <TransitionsModal
+          addToFav={addToFav}
+          product={product}
+          addToBasket={addToBasket}
+        >
           <div className="image-holder">
             <img alt="" src={product.media.source}></img>
           </div>

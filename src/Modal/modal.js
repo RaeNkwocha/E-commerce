@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -22,8 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({ children, product, addToFav }) {
+export default function TransitionsModal({
+  children,
+  product,
+  addToFav,
+  addToBasket,
+}) {
   const handleAddtoCart = () => addToFav(product.id, 1);
+  const handleAddtoBasket = () => addToBasket(product.id, 1);
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -85,13 +92,46 @@ export default function TransitionsModal({ children, product, addToFav }) {
             <p style={{ color: "black", margin: "10px" }}>{product.name}</p>
             <p
               className="desc"
-              style={{ margin: "10px" }}
+              style={{ margin: "10px", fontSize: "12px", lineHeight: "1.2rem" }}
               dangerouslySetInnerHTML={{ __html: product.description }}
             ></p>{" "}
-            <button onClick={handleAddtoCart}>
-              {" "}
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-            </button>
+            <section
+              style={{
+                display: "flex",
+                margin: "auto",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                color="secondary"
+                variant="contained"
+                onClick={handleAddtoCart}
+                style={{ margin: "15px" }}
+              >
+                {" "}
+                Add to wishlist{" "}
+                <i
+                  style={{ marginLeft: "10px" }}
+                  class="fa fa-heart-o"
+                  aria-hidden="true"
+                ></i>
+              </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleAddtoBasket}
+                style={{ margin: "15px" }}
+              >
+                {" "}
+                Add to Cart{" "}
+                <i
+                  style={{ marginLeft: "10px" }}
+                  class="fa fa-shopping-cart"
+                  aria-hidden="true"
+                ></i>
+              </Button>
+            </section>
           </div>
         </Fade>
       </Modal>

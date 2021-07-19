@@ -4,8 +4,16 @@ import "../../Component css/explore.css";
 import Bottomnav from "../Nav/Bottomnav";
 import Incart from "./Incart";
 import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
-function Basket({ cart, handleUpdateqty, removefromcart, emprtycart }) {
+function Basket({
+  cart,
+  handleUpdateqty,
+  removefromcart,
+  emprtycart,
+  totalItems,
+  favitems,
+}) {
   // const [cart] = useContext(CartContext);
 
   const Emptycart = () => (
@@ -32,17 +40,45 @@ function Basket({ cart, handleUpdateqty, removefromcart, emprtycart }) {
               handleUpdateqty={handleUpdateqty}
               removefromcart={removefromcart}
               emprtycart={emprtycart}
+              cart={cart}
             ></Incart>
-            {/* <button onClick={emprtycart}>Empty</button>
-          <h2>Subtotal: {cart.subtotal.formatted_with_symbol}</h2> */}
           </div>
         ))}
+        <div className="navbar">
+          <div className="icons">
+            <h3 style={{ marginTop: "15px", marginLeft: "15px" }}>
+              Subtotal: {cart.subtotal.formatted_with_symbol}
+            </h3>{" "}
+          </div>
+          <ul>
+            <li>
+              <Button
+                style={{ margin: "8px" }}
+                variant="contained"
+                color="secondary"
+                onClick={emprtycart}
+              >
+                Empty
+              </Button>
+            </li>
+            <li>
+              <Button
+                style={{ margin: "8px" }}
+                variant="contained"
+                color="primary"
+              >
+                CheckOut
+              </Button>
+            </li>
+          </ul>
+        </div>
       </section>
     </>
   );
   if (!cart.line_items) return "Loading...";
   return (
     <>
+      <Bottomnav totalItems={totalItems} favitems={favitems}></Bottomnav>
       <div>
         <h3 style={{ textAlign: "center", margin: "20px" }}>My cart</h3>
       </div>
@@ -54,8 +90,6 @@ function Basket({ cart, handleUpdateqty, removefromcart, emprtycart }) {
           <FilledCart></FilledCart>
         )}
       </section>
-      <button onClick={emprtycart}>Empty</button>
-      <h2>Subtotal: {cart.subtotal.formatted_with_symbol}</h2>{" "}
     </>
   );
 }

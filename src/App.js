@@ -87,12 +87,14 @@ function App({ current }) {
                 <Route exact path="/" component={Loading}></Route>
                 <Route path="/signup" exact component={Signup}></Route>
                 <Route path="/login" component={Login}></Route>
-                <Bottomnav
+                {/* <Bottomnav
                   totalItems={cart.total_items}
                   favitems={fav.total_items}
-                ></Bottomnav>
+                ></Bottomnav> */}
                 <Route path="/shop" exact component={Shop}>
                   <Shop
+                    totalItems={cart.total_items}
+                    favitems={fav.total_items}
                     products={products}
                     addToBasket={addToBasket}
                     addToFav={addToFav}
@@ -100,6 +102,8 @@ function App({ current }) {
                 </Route>
                 <Route exact path="/basket" component={Basket}>
                   <Basket
+                    totalItems={cart.total_items}
+                    favitems={fav.total_items}
                     cart={cart}
                     handleUpdateqty={handleUpdateqty}
                     removefromcart={removefromcart}
@@ -108,6 +112,8 @@ function App({ current }) {
                 </Route>
                 <Route exact path="/fav" component={Fav}>
                   <Fav
+                    totalItems={cart.total_items}
+                    favitems={fav.total_items}
                     addToFav={addToFav}
                     fav={fav}
                     removefromfav={removefromfav}
