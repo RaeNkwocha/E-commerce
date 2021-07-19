@@ -28,6 +28,7 @@ import { commerce } from "./lib/commerce";
 function App({ current }) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+  const [fav, setFav] = useState({});
   // const [cart,setCart] = useContext(CartContext);
 
   const fetchproducts = async () => {
@@ -38,9 +39,17 @@ function App({ current }) {
     const cart = await commerce.cart.retrieve();
     setCart(cart);
   };
+  const fetchfav = async () => {
+    const fav = await commerce.cart.retrieve();
+    setFav(fav);
+  };
   const addToBasket = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
     setCart(item.cart);
+  };
+  const addToFav = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+    setFav(item.cart);
   };
   const handleUpdateqty = async (lineItemId, quantity) => {
     const response = await commerce.cart.update(lineItemId, { quantity });
@@ -50,13 +59,22 @@ function App({ current }) {
     const response = await commerce.cart.remove(lineItemId);
     setCart(response.cart);
   };
+  const removefromfav = async (lineItemId) => {
+    const response = await commerce.cart.remove(lineItemId);
+    setFav(response.cart);
+  };
   const emprtycart = async () => {
     const { cart } = await commerce.cart.empty();
     setCart(cart);
   };
+  const emprtyFav = async () => {
+    const { cart } = await commerce.cart.empty();
+    setFav(cart);
+  };
   useEffect(() => {
     fetchproducts();
     fetchcart();
+    fetchfav();
   }, []);
   return (
     <Context>
@@ -66,14 +84,19 @@ function App({ current }) {
             {/* <Navbar /> */}
             <Switch>
               <AuthProvider>
-                <Bottomnav totalItems={cart.total_items}></Bottomnav>
-
-                {/* <Route exact path="/"  component={Loading}></Route>
-        <Route path="/signup" exact component={Signup}></Route>
-        <Route path="/login" component={Login}></Route> */}
-
-                <Route path="/" exact component={Shop}>
-                  <Shop products={products} addToBasket={addToBasket}></Shop>
+                <Route exact path="/" component={Loading}></Route>
+                <Route path="/signup" exact component={Signup}></Route>
+                <Route path="/login" component={Login}></Route>
+                <Bottomnav
+                  totalItems={cart.total_items}
+                  favitems={fav.total_items}
+                ></Bottomnav>
+                <Route path="/shop" exact component={Shop}>
+                  <Shop
+                    products={products}
+                    addToBasket={addToBasket}
+                    addToFav={addToFav}
+                  ></Shop>
                 </Route>
                 <Route exact path="/basket" component={Basket}>
                   <Basket
@@ -83,14 +106,13 @@ function App({ current }) {
                     emprtycart={emprtycart}
                   ></Basket>
                 </Route>
-                {!current ? (
-                  <Redirect to="/" />
-                ) : (
-                  <Route exact path="/product/:id" component={SingleItem} />
-                )}
-                <Route path="/fav" component={Mappedfav}>
-                  {" "}
-                  <Mappedfav></Mappedfav>
+                <Route exact path="/fav" component={Fav}>
+                  <Fav
+                    addToFav={addToFav}
+                    fav={fav}
+                    removefromfav={removefromfav}
+                    emprtyFav={emprtyFav}
+                  ></Fav>
                 </Route>
               </AuthProvider>
             </Switch>

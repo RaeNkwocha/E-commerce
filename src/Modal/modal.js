@@ -22,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal({ children, product }) {
+export default function TransitionsModal({ children, product, addToFav }) {
+  const handleAddtoCart = () => addToFav(product.id, 1);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -86,7 +88,10 @@ export default function TransitionsModal({ children, product }) {
               style={{ margin: "10px" }}
               dangerouslySetInnerHTML={{ __html: product.description }}
             ></p>{" "}
-            <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <button onClick={handleAddtoCart}>
+              {" "}
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+            </button>
           </div>
         </Fade>
       </Modal>

@@ -1,75 +1,54 @@
-// import React, { useContext, useState } from 'react'
-// import { connect } from 'react-redux'
-// import { FavContext } from '../../Context/Favcontext';
-// import Newproduct from '../Products/Newproduct';
-// import SingleItem from '../SingleItem/SingleItem';
-// import Mappedfav from './Mappedfav'
+import React from "react";
+import Infav from "./Infav";
 
-// function Fav({products}) {
-//     const [fav, setFav] = useContext(FavContext);
-    
- 
-//     const addToCart=(product)=>{
-//       setFav([...fav,{...product}])
-//     }
-//     let [fruits] = useState([
-//         {
-//           id: 1,
-//           name: "Organic Bannas",
-//         //   image: Bannas,
-//           price: "$4.99",
-//           description: "7pcs priceg",
-//           inCart: false,
-//         },
-//         {
-//           id: 2,
-//           name: "Red Apple",
-//         //   image: Apples,
-//           price: "$4.99",
-//           description: "7pcs priceg",
-//           inCart: false,
-//         },
-//         {
-//           id: 3,
-//           name: "Red Apple",
-//         //   image: Apples,
-//           price: "$4.99",
-//           description: "7pcs priceg",
-//           inCart: false,
-//         },
-//         {
-//           id: 4,
-//           name: "Red Apple",
-//         //   image: Apples,
-//           price: "$4.99",
-//           description: "7pcs priceg",
-//           inCart: false,
-//         },
-//       ]);
-//     return (
-//         <div>
-//          {fav.map((item) => {
-//                 return <div >
-//                          <Mappedfav  name={item.name}
-//                          price={item.price}
-//                                      addToCart={addToCart}
-                
-//                 >
-//                 </Mappedfav>
+const Fav = ({ fav, emprtyFav, removefromfav }) => {
+  const Emptycart = () => (
+    <>
+      <h3
+        style={{
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "200px",
+        }}
+      >
+        There are no items in your wishlist{" "}
+      </h3>
+    </>
+  );
+  const FilledCart = () => (
+    <>
+      <section>
+        {fav.line_items.map((item) => (
+          <div>
+            <Infav
+              item={item}
+              removefromfav={removefromfav}
+              emprtyFav={emprtyFav}
+            ></Infav>
+          </div>
+        ))}
+      </section>
+    </>
+  );
+  if (!fav.line_items) return "Loading...";
+  return (
+    <>
+      <div>
+        <h3 style={{ textAlign: "center", margin: "20px" }}>My Wishlist</h3>
+      </div>
+      <div className="line"></div>
+      <section>
+        {!fav.line_items.length ? (
+          <Emptycart></Emptycart>
+        ) : (
+          <FilledCart></FilledCart>
+        )}
+      </section>
+      <button onClick={emprtyFav}>Empty</button>
+      <h2>Subtotal: {fav.subtotal.formatted_with_symbol}</h2>{" "}
+    </>
+  );
+};
 
-//                 </div>
-//             })}
-            
-//             </div>
-        
-//     )
-// }
-// const mapStateToProps= (state) =>{
-//     return{
-//       products:state.shop.products,
-//       newProducts:state.shop.newProducts,
-//       gorceries:state.shop.gorceries
-//     }
-//   }
-
-// export default connect(mapStateToProps) (Fav)
+export default Fav;
