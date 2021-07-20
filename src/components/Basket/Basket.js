@@ -4,7 +4,7 @@ import "../../Component css/explore.css";
 import Bottomnav from "../Nav/Bottomnav";
 import Incart from "./Incart";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 
 function Basket({
   cart,
@@ -44,33 +44,41 @@ function Basket({
             ></Incart>
           </div>
         ))}
-        <div className="navbar">
-          <ul>
-            <li>
-              <Button
-                style={{ margin: "8px" }}
-                variant="contained"
-                color="secondary"
-                onClick={emprtycart}
-              >
-                Empty
-              </Button>
-            </li>
-            <li>
-              <Button
-                style={{ margin: "8px" }}
-                variant="contained"
-                color="primary"
-              >
-                CheckOut
-              </Button>
-            </li>
-          </ul>
+        <div style={{ marginBottom: "50px", marginTop: "50px" }}>
+          <Button
+            style={{ margin: "8px" }}
+            variant="contained"
+            color="secondary"
+            onClick={emprtycart}
+          >
+            Empty
+          </Button>
+          <Link to="/checkout">
+            <Button
+              style={{ margin: "8px" }}
+              variant="contained"
+              color="primary"
+            >
+              CheckOut
+            </Button>
+          </Link>
         </div>
       </section>
     </>
   );
-  if (!cart.line_items) return "Loading...";
+  if (!cart.line_items)
+    return (
+      <div
+        style={{
+          display: "flex",
+          margin: "auto",
+          justifyContent: "center",
+          paddingTop: "100px",
+        }}
+      >
+        <CircularProgress></CircularProgress>
+      </div>
+    );
   return (
     <>
       <Bottomnav totalItems={totalItems} favitems={favitems}></Bottomnav>

@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import React from "react";
 import Bottomnav from "../Nav/Bottomnav";
 import Infav from "./Infav";
@@ -40,29 +40,44 @@ const Fav = ({
             ></Infav>
           </div>
         ))}
-        <div className="navbar">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div className="icons">
             <h3 style={{ marginTop: "15px", marginLeft: "15px" }}>
               Subtotal: {fav.subtotal.formatted_with_symbol}
             </h3>{" "}
           </div>
-          <ul>
-            <li>
-              <Button
-                style={{ margin: "8px" }}
-                variant="contained"
-                color="secondary"
-                onClick={emprtyFav}
-              >
-                Empty
-              </Button>
-            </li>
-          </ul>
+
+          <Button
+            style={{ margin: "8px" }}
+            variant="contained"
+            color="secondary"
+            onClick={emprtyFav}
+          >
+            Empty
+          </Button>
         </div>
       </section>
     </>
   );
-  if (!fav.line_items) return "Loading...";
+  if (!fav.line_items)
+    return (
+      <div
+        style={{
+          display: "flex",
+          margin: "auto",
+          justifyContent: "center",
+          paddingTop: "100px",
+        }}
+      >
+        <CircularProgress></CircularProgress>
+      </div>
+    );
   return (
     <>
       <Bottomnav totalItems={totalItems} favitems={favitems}></Bottomnav>

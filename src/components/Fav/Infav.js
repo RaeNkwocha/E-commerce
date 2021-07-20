@@ -29,16 +29,6 @@ function Infav({ item, removefromfav, addToBasket, products }) {
 
           <div className="layout-flex-1">
             <h6>${item.price.formatted * item.quantity}</h6>
-            <div className="cart" style={{ background: "none" }}>
-              <button style={{ background: "none", border: "none" }}>
-                {" "}
-                <img
-                  onClick={handlefromFav}
-                  style={{ width: "50%", marginTop: "5px" }}
-                  src={btn}
-                ></img>
-              </button>
-            </div>
           </div>
         </div>
       </div>

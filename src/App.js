@@ -25,6 +25,7 @@ import Fav from "./components/Fav/Fav";
 import { Favcontext } from "./Context/Favcontext";
 import Mappedfav from "./components/Fav/Mappedfav";
 import { commerce } from "./lib/commerce";
+import Checkout from "./checkout/Checkout";
 function App({ current }) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
@@ -121,6 +122,9 @@ function App({ current }) {
                     removefromfav={removefromfav}
                     emprtyFav={emprtyFav}
                   ></Fav>
+                </Route>
+                <Route exact path="/checkout" component={Checkout}>
+                  <Checkout cart={cart}></Checkout>
                 </Route>
               </AuthProvider>
             </Switch>
