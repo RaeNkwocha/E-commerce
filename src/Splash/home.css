@@ -1,5 +1,13 @@
 .skew {
   transform: skewY(12deg);
-  height: 8vh;
+  height: 10vh;
   background: white;
+}
+
+@media only screen and (min-width: 992px) {
+  .skew {
+    transform: skewY(12deg);
+    height: 15vh;
+    background: white;
+  }
 }

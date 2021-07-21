@@ -96,7 +96,7 @@ const Address = ({ checkoutToken, test }) => {
             <FormInput required name="zip" label="Zip / Postal code" />
             <Grid item xs={12} sm={6}>
               <InputLabel>Shipping Country</InputLabel>
-              <Select
+              <select
                 value={shippingCountry}
                 fullWidth
                 onChange={(e) => setShippingCountry(e.target.value)}
@@ -104,27 +104,33 @@ const Address = ({ checkoutToken, test }) => {
                 {Object.entries(shippingCountries)
                   .map(([code, name]) => ({ id: code, label: name }))
                   .map((item) => (
-                    <MenuItem key={item.id} value={item.id}>
+                    <option key={item.id} value={item.id}>
                       {item.label}
-                    </MenuItem>
+                    </option>
                   ))}
-              </Select>
+              </select>
             </Grid>
             <Grid item xs={12} sm={6}>
               <InputLabel>Shipping Subdivision</InputLabel>
-              <Select
+              <select
+                style={{
+                  width: "100%",
+                  outline: "none",
+                  borderBottom: "solid 10px,black",
+                  border: "none",
+                }}
                 value={shippingSubdivision}
-                fullWidth
+                // fullWidth
                 onChange={(e) => setShippingSubdivision(e.target.value)}
               >
                 {Object.entries(shippingSubdivisions)
                   .map(([code, name]) => ({ id: code, label: name }))
                   .map((item) => (
-                    <MenuItem key={item.id} value={item.id}>
+                    <option key={item.id} value={item.id}>
                       {item.label}
-                    </MenuItem>
+                    </option>
                   ))}
-              </Select>
+              </select>
             </Grid>
             <Grid item xs={12} sm={6}>
               <InputLabel>Shipping Options</InputLabel>

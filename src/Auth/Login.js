@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
-import { Form, Alert } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "./Authcontext";
-// import "./Login.css";
-// import fruit from "../Splash/Group.png"
-// import "bootstrap/dist/css/bootstrap.min.css"
+import Alert from "@material-ui/lab/Alert";
+
+import fruit from "../components/Products/shopImage/Group.png";
 
 function Login() {
   const emailRef = useRef();
@@ -43,11 +43,11 @@ function Login() {
             paddingTop: "10vh",
           }}
         >
-          {/* <img src={fruit} alt=""></img> */}
+          <img src={fruit} alt=""></img>
         </div>
       </div>
       <h2 style={{ marginLeft: "30px" }}> Login in</h2>
-      {error && <Alert variant="danger"> {error} </Alert>}
+      {error && <Alert severity="error"> {error} </Alert>}
       <h6
         style={{
           fontSize: "10px",

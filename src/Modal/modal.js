@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -69,7 +70,7 @@ export default function TransitionsModal({
             <div
               style={{
                 background: "lightgrey",
-                height: "50%",
+                height: "40%",
                 borderRadius: "10px",
               }}
             >
@@ -104,15 +105,14 @@ export default function TransitionsModal({
                 alignItems: "center",
               }}
             >
-              <button
+              <Button
                 onClick={handleAddtoCart}
                 style={{
                   margin: "5px",
                   padding: "5px",
-                  background: "#c80815",
-                  border: "none",
-                  outline: "none",
                 }}
+                variant="contained"
+                color="secondary"
               >
                 {" "}
                 Add to wishlist{" "}
@@ -121,16 +121,15 @@ export default function TransitionsModal({
                   class="fa fa-heart-o"
                   aria-hidden="true"
                 ></i>
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleAddtoBasket}
                 style={{
                   margin: "5px",
                   padding: "5px",
-                  background: "#5D8AA8",
-                  border: "none",
-                  outline: "none",
                 }}
+                variant="contained"
+                color="primary"
               >
                 {" "}
                 Add to Cart{" "}
@@ -139,7 +138,7 @@ export default function TransitionsModal({
                   class="fa fa-shopping-cart"
                   aria-hidden="true"
                 ></i>
-              </button>
+              </Button>
             </section>
           </div>
         </Fade>

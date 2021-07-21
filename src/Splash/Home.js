@@ -17,11 +17,11 @@ function Home() {
         height: "100vh",
       }}
     >
-      <div style={{ boxShadow: "10px,10px,10px,10px" }}>
+      <div className="box-shadow">
         <img
           style={{
             width: "100%",
-            height: "400px",
+            height: "300px",
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
           }}
@@ -29,13 +29,18 @@ function Home() {
           alt=""
         ></img>
         <div className="skew"></div>
-        <div style={{ margin: "15px" }}>
+        <div style={{ margin: "15px", paddingTop: "10px" }}>
           <h2 style={{ color: "black" }}>Get Your Groceries With Nectar </h2>
           <Button
-            style={{ marginTop: "10px" }}
+            style={{
+              marginTop: "10px",
+              backgroundColor: "#53B175",
+              color: "white",
+            }}
             onClick={navHandler}
             variant="contained"
-            color="primary"
+
+            // color="primary"
           >
             <h3 style={{ textTransform: "uppercase" }}> Get Started</h3>
           </Button>
