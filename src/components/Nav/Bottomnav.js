@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../Component css/nav.css";
 import { Badge } from "@material-ui/core";

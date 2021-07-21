@@ -1,0 +1,5 @@
+.skew {
+  transform: skewY(12deg);
+  height: 8vh;
+  background: white;
+}

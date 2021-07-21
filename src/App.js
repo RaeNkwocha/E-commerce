@@ -1,36 +1,27 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
-import { connect } from "react-redux";
-
-import Navbar from "./components/Navbar/Navbar";
-import Products from "./components/Products/Products";
-import Cart from "./components/Cart/Cart";
-import SingleItem from "./components/SingleItem/SingleItem";
 import Loading from "./Splash/Loading";
 import Signup from "./Auth/Signup";
 import { AuthProvider } from "./Auth/Authcontext";
 import Login from "./Auth/Login";
 import Shop from "./components/Products/Shop";
-import { CartContext, Context } from "./Context/Context";
-import Bottomnav from "./components/Nav/Bottomnav";
+import { Context } from "./Context/Context";
+
 import Basket from "./components/Basket/Basket";
 import Fav from "./components/Fav/Fav";
 import { Favcontext } from "./Context/Favcontext";
-import Mappedfav from "./components/Fav/Mappedfav";
+
 import { commerce } from "./lib/commerce";
 import Checkout from "./checkout/Checkout";
+import Payment from "./checkout/checkoutform/Payment";
 function App({ current }) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [fav, setFav] = useState({});
-  // const [cart,setCart] = useContext(CartContext);
+  const [errormesseage, setErrorMessage] = useState("");
+  const [order, setOrder] = useState({});
 
   const fetchproducts = async () => {
     const { data } = await commerce.products.list();
@@ -72,6 +63,22 @@ function App({ current }) {
     const { cart } = await commerce.cart.empty();
     setFav(cart);
   };
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  };
+  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      const incomingOrder = await commerce.checkout.capture(
+        checkoutTokenId,
+        newOrder
+      );
+      setOrder(incomingOrder);
+      refreshCart();
+    } catch (error) {
+      setErrorMessage(error.data.error.message);
+    }
+  };
   useEffect(() => {
     fetchproducts();
     fetchcart();
@@ -82,16 +89,12 @@ function App({ current }) {
       <Favcontext>
         <Router>
           <div className="app">
-            {/* <Navbar /> */}
             <Switch>
               <AuthProvider>
                 <Route exact path="/" component={Loading}></Route>
                 <Route path="/signup" exact component={Signup}></Route>
                 <Route path="/login" component={Login}></Route>
-                {/* <Bottomnav
-                  totalItems={cart.total_items}
-                  favitems={fav.total_items}
-                ></Bottomnav> */}
+
                 <Route path="/shop" exact component={Shop}>
                   <Shop
                     totalItems={cart.total_items}
@@ -124,7 +127,15 @@ function App({ current }) {
                   ></Fav>
                 </Route>
                 <Route exact path="/checkout" component={Checkout}>
-                  <Checkout cart={cart}></Checkout>
+                  <Checkout
+                    cart={cart}
+                    order={order}
+                    onCaptureCheckout={handleCaptureCheckout}
+                    error={errormesseage}
+                  ></Checkout>
+                </Route>
+                <Route exact path="/payment" component={Payment}>
+                  <Payment></Payment>
                 </Route>
               </AuthProvider>
             </Switch>
@@ -135,10 +146,4 @@ function App({ current }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    current: state.shop.currentItem,
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

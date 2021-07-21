@@ -12,14 +12,7 @@ function Shop({ products, addToBasket, addToFav, totalItems, favitems }) {
   return (
     <>
       <Bottomnav totalItems={totalItems} favitems={favitems}></Bottomnav>
-      <div
-        style={{
-          display: "flex",
-          marginTop: "50px",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
+      <div className="Home-page">
         <div className="load-screen">
           <div
             style={{

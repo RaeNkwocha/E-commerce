@@ -1,10 +1,8 @@
 import React from "react";
 import cross from "../../components/Basket/Image/delete.png";
-import btn from "../Products/shopImage/btn.png";
 
-function Infav({ item, removefromfav, addToBasket, products }) {
+function Infav({ item, removefromfav }) {
   const removeitem = (lineItemId) => removefromfav(lineItemId);
-  const handlefromFav = () => addToBasket(products.id, 1);
 
   return (
     <>

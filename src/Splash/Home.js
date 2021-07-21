@@ -1,57 +1,48 @@
-import React from 'react'
-import home from "./Imgaes/Home.png"
-import {useHistory} from "react-router-dom"
+import React from "react";
+import home from "./Imgaes/Home.png";
+import { useHistory } from "react-router-dom";
+import "./home.css";
+import { Button } from "@material-ui/core";
 
 function Home() {
-    const history=useHistory()
-    const navHandler=()=>{
-        history.push("/signup")
-    }
-    return (
-        <div style={{ background: "lightGrey", height: "100vh" }}>
-      <div>
+  const history = useHistory();
+  const navHandler = () => {
+    history.push("/signup");
+  };
+
+  return (
+    <div
+      style={{
+        background: "white",
+        height: "100vh",
+      }}
+    >
+      <div style={{ boxShadow: "10px,10px,10px,10px" }}>
         <img
           style={{
             width: "100%",
-            height: "60vh",
+            height: "400px",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
           }}
-          src={home}
+          src="https://images.unsplash.com/photo-1576398289164-c48dc021b4e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnJ1aXRzJTIwYW5kJTIwdmVnZXRhYmxlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
           alt=""
         ></img>
-        <div
-          style={{
-            width: "100%",
-            marginLeft: "20%",
-            paddingTop: "35PX",
-            display: "flex,",
-            justifyContent: "center",
-            margin: "auto",
-          }}
-        >
+        <div className="skew"></div>
+        <div style={{ margin: "15px" }}>
           <h2 style={{ color: "black" }}>Get Your Groceries With Nectar </h2>
-          <button
+          <Button
+            style={{ marginTop: "10px" }}
             onClick={navHandler}
-            style={{
-              borderRadius: "10px",
-              outline: "none",
-              border: "none",
-              background: "#53B175",
-              color: "white",
-              width: "50%",
-              padding: "10px",
-              cursor: "pointer",
-            }}
+            variant="contained"
+            color="primary"
           >
-            <h3 style={{ letterSpacing: "7px", textTransform: "uppercase" }}>
-              {" "}
-              Get Started
-            </h3>
-          </button>
+            <h3 style={{ textTransform: "uppercase" }}> Get Started</h3>
+          </Button>
         </div>
-       
       </div>
     </div>
-    )
+  );
 }
 
-export default Home
+export default Home;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import cross from "./Image/delete.png";
 function Incart({ item, handleUpdateqty, removefromcart }) {

@@ -1,14 +1,9 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../Context/Context";
+import React from "react";
 import "../../Component css/products.css";
 import btn from "./shopImage/btn.png";
-import { connect } from "react-redux";
-import { loadCurrentItem } from "../../redux/Shopping/shopping-actions";
-import { Link } from "react-router-dom";
 import TransitionsModal from "../../Modal/modal";
 function Newproduct({ product, addToBasket, addToFav }) {
   const handleAddtoCart = () => addToBasket(product.id, 1);
-  // const [cart, setCart] = useContext(CartContext);
 
   return (
     <>
@@ -25,7 +20,6 @@ function Newproduct({ product, addToBasket, addToFav }) {
 
         <div className="para">
           <p>{product.name}</p>
-          {/* <p className="desc" dangerouslySetInnerHTML={{__html:product.description}}></p> */}
         </div>
         <div className="para-flex">
           <div className="para">
@@ -39,6 +33,7 @@ function Newproduct({ product, addToBasket, addToFav }) {
                 <img
                   onClick={handleAddtoCart}
                   style={{ width: "100%" }}
+                  alt=""
                   src={btn}
                 ></img>
               </button>
@@ -49,10 +44,5 @@ function Newproduct({ product, addToBasket, addToFav }) {
     </>
   );
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-    //   addToCart: (id) => dispatch(addToCart(id)),
-    loadCurrentItem: (item) => dispatch(loadCurrentItem(item)),
-  };
-};
-export default connect(null, mapDispatchToProps)(Newproduct);
+
+export default Newproduct;

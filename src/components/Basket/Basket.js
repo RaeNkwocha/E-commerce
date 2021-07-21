@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../Context/Context";
+import React from "react";
 import "../../Component css/explore.css";
 import Bottomnav from "../Nav/Bottomnav";
 import Incart from "./Incart";
@@ -14,8 +13,6 @@ function Basket({
   totalItems,
   favitems,
 }) {
-  // const [cart] = useContext(CartContext);
-
   const Emptycart = () => (
     <>
       <h3
@@ -34,8 +31,9 @@ function Basket({
     <>
       <section>
         {cart.line_items.map((item) => (
-          <div>
+          <div key={item.id}>
             <Incart
+              key={item.id}
               item={item}
               handleUpdateqty={handleUpdateqty}
               removefromcart={removefromcart}

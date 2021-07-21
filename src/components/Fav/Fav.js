@@ -32,6 +32,7 @@ const Fav = ({
         {fav.line_items.map((item) => (
           <div>
             <Infav
+              key={item.id}
               item={item}
               removefromfav={removefromfav}
               emprtyFav={emprtyFav}
