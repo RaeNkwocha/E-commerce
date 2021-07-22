@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -7,11 +7,9 @@ import Signup from "./Auth/Signup";
 import { AuthProvider } from "./Auth/Authcontext";
 import Login from "./Auth/Login";
 import Shop from "./components/Products/Shop";
-import { CartContext, Context } from "./Context/Context";
 
 import Basket from "./components/Basket/Basket";
 import Fav from "./components/Fav/Fav";
-import { Favcontext, FavContext } from "./Context/Favcontext";
 
 import { commerce } from "./lib/commerce";
 import Checkout from "./checkout/Checkout";
