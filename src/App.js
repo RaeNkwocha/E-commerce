@@ -16,16 +16,18 @@ import { Favcontext } from "./Context/Favcontext";
 import { commerce } from "./lib/commerce";
 import Checkout from "./checkout/Checkout";
 import Payment from "./checkout/checkoutform/Payment";
-function App({ current }) {
+function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [fav, setFav] = useState({});
+  const [loading, setLoading] = useState(false);
   const [errormesseage, setErrorMessage] = useState("");
   const [order, setOrder] = useState({});
 
   const fetchproducts = async () => {
     const { data } = await commerce.products.list();
     setProducts(data);
+    setLoading(true);
   };
   const fetchcart = async () => {
     const cart = await commerce.cart.retrieve();
@@ -102,6 +104,7 @@ function App({ current }) {
                     products={products}
                     addToBasket={addToBasket}
                     addToFav={addToFav}
+                    loading={loading}
                   ></Shop>
                 </Route>
                 <Route exact path="/basket" component={Basket}>

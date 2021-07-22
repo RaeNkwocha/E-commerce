@@ -98,7 +98,13 @@ const Address = ({ checkoutToken, test }) => {
               <InputLabel>Shipping Country</InputLabel>
               <select
                 value={shippingCountry}
-                fullWidth
+                style={{
+                  width: "70%",
+                  outline: "none",
+                  borderBottom: "solid",
+                  border: "none",
+                  paddingTop: "10px",
+                }}
                 onChange={(e) => setShippingCountry(e.target.value)}
               >
                 {Object.entries(shippingCountries)
@@ -114,10 +120,11 @@ const Address = ({ checkoutToken, test }) => {
               <InputLabel>Shipping Subdivision</InputLabel>
               <select
                 style={{
-                  width: "100%",
+                  width: "70%",
                   outline: "none",
-                  borderBottom: "solid 10px,black",
+                  borderBottom: "solid",
                   border: "none",
+                  paddingTop: "10px",
                 }}
                 value={shippingSubdivision}
                 // fullWidth
@@ -154,7 +161,7 @@ const Address = ({ checkoutToken, test }) => {
           </Grid>
           <br />
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button component={Link} variant="outlined" to="/cart">
+            <Button component={Link} variant="outlined" to="/basket">
               Back to Cart
             </Button>
             <Button type="submit" variant="contained" color="primary">

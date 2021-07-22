@@ -5,9 +5,23 @@ import "../../Component css/splash.css";
 import banner from "./shopImage/banner.png";
 import Newproduct from "./Newproduct";
 import Bottomnav from "../Nav/Bottomnav";
+import { Spinner } from "react-bootstrap";
+import { CircularProgress } from "@material-ui/core";
 
-function Shop({ products, addToBasket, addToFav, totalItems, favitems }) {
+function Shop({
+  products,
+  addToBasket,
+  addToFav,
+  totalItems,
+  favitems,
+  loading,
+}) {
   const [input, setInput] = useState("");
+  if (products.length > 0) {
+    products = products.filter((product) => {
+      return product.name.match(input);
+    });
+  }
 
   return (
     <>
@@ -67,19 +81,31 @@ function Shop({ products, addToBasket, addToFav, totalItems, favitems }) {
               <h5 style={{ fontWeight: "bold" }}>Exclusive Offer</h5>
               <h5 style={{ color: "#53B175", fontSize: "0.6rem" }}>see more</h5>
             </section>
-
-            <div className="product-display">
-              {products.map((product) => {
-                return (
-                  <Newproduct
-                    key={product.id}
-                    product={product}
-                    addToFav={addToFav}
-                    addToBasket={addToBasket}
-                  ></Newproduct>
-                );
-              })}
-            </div>
+            {loading ? (
+              <div className="product-display">
+                {products.map((product) => {
+                  return (
+                    <Newproduct
+                      key={product.id}
+                      product={product}
+                      addToFav={addToFav}
+                      addToBasket={addToBasket}
+                    ></Newproduct>
+                  );
+                })}
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  margin: "auto",
+                  justifyContent: "center",
+                  paddingTop: "100px",
+                }}
+              >
+                <CircularProgress></CircularProgress>
+              </div>
+            )}
           </section>
         </div>
       </div>

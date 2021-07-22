@@ -24,6 +24,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [isfinished, setIsFinished] = useState(false);
   const [shippingData, setShippingData] = useState({});
+  const [loading, setloading] = useState(false);
   const classes = useStyles();
   const history = useHistory();
 
@@ -39,6 +40,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
           });
 
           setCheckoutToken(token);
+          setloading(true);
         } catch {
           if (activeStep !== steps.length) history.push("/");
         }
@@ -115,8 +117,7 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
         onCaptureCheckout={onCaptureCheckout}
       />
     );
-
-  return (
+  const CheckoutForm = () => (
     <>
       <CssBaseline />
       <div className={classes.toolbar} />
@@ -139,6 +140,25 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
           )}
         </Paper>
       </main>
+    </>
+  );
+
+  return (
+    <>
+      {loading ? (
+        <CheckoutForm></CheckoutForm>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            margin: "auto",
+            justifyContent: "center",
+            paddingTop: "100px",
+          }}
+        >
+          <CircularProgress></CircularProgress>
+        </div>
+      )}
     </>
   );
 };

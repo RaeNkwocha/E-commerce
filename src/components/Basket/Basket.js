@@ -42,7 +42,14 @@ function Basket({
             ></Incart>
           </div>
         ))}
-        <div style={{ marginBottom: "50px", marginTop: "50px" }}>
+        <div
+          style={{
+            marginBottom: "50px",
+            marginTop: "50px",
+            display: "flex",
+            float: "right",
+          }}
+        >
           <Button
             style={{ margin: "8px" }}
             variant="contained"

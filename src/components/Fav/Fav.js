@@ -50,7 +50,11 @@ const Fav = ({
         >
           <div className="icons">
             <h3 style={{ marginTop: "15px", marginLeft: "15px" }}>
-              Subtotal: {fav.subtotal.formatted_with_symbol}
+              Subtotal:{" "}
+              <span style={{ color: "green" }}>
+                {" "}
+                {fav.subtotal.formatted_with_symbol}
+              </span>
             </h3>{" "}
           </div>
 
