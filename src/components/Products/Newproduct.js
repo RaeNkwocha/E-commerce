@@ -2,14 +2,14 @@ import React from "react";
 import "../../Component css/products.css";
 import btn from "./shopImage/btn.png";
 import TransitionsModal from "../../Modal/modal";
-function Newproduct({ product, addToBasket, addToFav }) {
+function Newproduct({ product, addToBasket, addtoFav }) {
   const handleAddtoCart = () => addToBasket(product.id, 1);
 
   return (
     <>
       <div key={product.id} className="container">
         <TransitionsModal
-          addToFav={addToFav}
+          addtoFav={addtoFav}
           product={product}
           addToBasket={addToBasket}
         >

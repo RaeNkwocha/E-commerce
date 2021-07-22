@@ -5,13 +5,12 @@ import "../../Component css/splash.css";
 import banner from "./shopImage/banner.png";
 import Newproduct from "./Newproduct";
 import Bottomnav from "../Nav/Bottomnav";
-import { Spinner } from "react-bootstrap";
 import { CircularProgress } from "@material-ui/core";
 
 function Shop({
   products,
   addToBasket,
-  addToFav,
+  addtoFav,
   totalItems,
   favitems,
   loading,
@@ -88,7 +87,7 @@ function Shop({
                     <Newproduct
                       key={product.id}
                       product={product}
-                      addToFav={addToFav}
+                      addtoFav={addtoFav}
                       addToBasket={addToBasket}
                     ></Newproduct>
                   );

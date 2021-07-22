@@ -26,10 +26,10 @@ const useStyles = makeStyles((theme) => ({
 export default function TransitionsModal({
   children,
   product,
-  addToFav,
+  addtoFav,
   addToBasket,
 }) {
-  const handleAddtoCart = () => addToFav(product.id, 1);
+  const handleAddtoCart = () => addtoFav(product);
   const handleAddtoBasket = () => addToBasket(product.id, 1);
 
   const classes = useStyles();

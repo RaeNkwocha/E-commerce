@@ -3,7 +3,6 @@ import cross from "../../components/Basket/Image/delete.png";
 
 function Infav({ item, removefromfav }) {
   const removeitem = (lineItemId) => removefromfav(lineItemId);
-
   return (
     <>
       <div className="incart">
@@ -26,7 +25,7 @@ function Infav({ item, removefromfav }) {
           </div>
 
           <div className="layout-flex-1">
-            <h6>${item.price.formatted * item.quantity}</h6>
+            <h6>${item.price.formatted}</h6>
           </div>
         </div>
       </div>

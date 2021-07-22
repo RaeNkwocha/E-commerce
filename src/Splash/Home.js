@@ -14,7 +14,7 @@ function Home() {
     <div
       style={{
         background: "white",
-        height: "100vh",
+        height: "100%",
       }}
     >
       <div className="box-shadow">

@@ -8,6 +8,23 @@ function Bottomnav({ totalItems, favitems }) {
   const handlenav = () => {
     history.push("/basket");
   };
+  const Fav = () => (
+    <>
+      <Link style={{ textDecoration: "none", color: "black" }} to="fav">
+        <Badge badgeContent={favitems} color="secondary">
+          <button style={{ border: "none", background: "none" }}>
+            <i
+              style={{ fontSize: "18px" }}
+              class="fa fa-heart-o"
+              aria-hidden="true"
+            ></i>
+          </button>
+        </Badge>
+
+        <p style={{ fontSize: "10px" }}>Wishlist</p>
+      </Link>
+    </>
+  );
   return (
     <>
       <nav className="navbar">
@@ -30,19 +47,7 @@ function Bottomnav({ totalItems, favitems }) {
             }}
           >
             <div className="icons-flex">
-              <Link style={{ textDecoration: "none", color: "black" }} to="fav">
-                <Badge badgeContent={favitems} color="secondary">
-                  <button style={{ border: "none", background: "none" }}>
-                    <i
-                      style={{ fontSize: "18px" }}
-                      class="fa fa-heart-o"
-                      aria-hidden="true"
-                    ></i>
-                  </button>
-                </Badge>
-
-                <p style={{ fontSize: "10px" }}>Wishlist</p>
-              </Link>
+              <Fav></Fav>
             </div>
           </li>
           <li>

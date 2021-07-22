@@ -1,4 +1,4 @@
-import { Button, CircularProgress } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import React from "react";
 import Bottomnav from "../Nav/Bottomnav";
 import Infav from "./Infav";
@@ -6,9 +6,9 @@ import Infav from "./Infav";
 const Fav = ({
   fav,
   emprtyFav,
+  favitems,
   removefromfav,
   totalItems,
-  favitems,
   addToBasket,
   products,
 }) => {
@@ -29,7 +29,7 @@ const Fav = ({
   const FilledCart = () => (
     <>
       <section>
-        {fav.line_items.map((item) => (
+        {fav.map((item) => (
           <div>
             <Infav
               key={item.id}
@@ -44,20 +44,11 @@ const Fav = ({
         <div
           style={{
             display: "flex",
+            float: "right",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <div className="icons">
-            <h3 style={{ marginTop: "15px", marginLeft: "15px" }}>
-              Subtotal:{" "}
-              <span style={{ color: "green" }}>
-                {" "}
-                {fav.subtotal.formatted_with_symbol}
-              </span>
-            </h3>{" "}
-          </div>
-
           <Button
             style={{ margin: "8px" }}
             variant="contained"
@@ -70,19 +61,7 @@ const Fav = ({
       </section>
     </>
   );
-  if (!fav.line_items)
-    return (
-      <div
-        style={{
-          display: "flex",
-          margin: "auto",
-          justifyContent: "center",
-          paddingTop: "100px",
-        }}
-      >
-        <CircularProgress></CircularProgress>
-      </div>
-    );
+
   return (
     <>
       <Bottomnav totalItems={totalItems} favitems={favitems}></Bottomnav>
@@ -91,11 +70,7 @@ const Fav = ({
       </div>
       <div className="line"></div>
       <section>
-        {!fav.line_items.length ? (
-          <Emptycart></Emptycart>
-        ) : (
-          <FilledCart></FilledCart>
-        )}
+        {!fav.length ? <Emptycart></Emptycart> : <FilledCart></FilledCart>}
       </section>
     </>
   );
